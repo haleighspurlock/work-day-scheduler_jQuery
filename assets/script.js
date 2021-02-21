@@ -1,14 +1,33 @@
+var startTime = 9;
+var endTime = 17;
+
 var lastProcessedHour = 0;
 
 var currentDay = moment();
 $('#currentDay').text(currentDay.format('dddd, MMMM Do'));
 
+function generateCalendar() {
+    for (hour = startTime; hour <= endTime; hour++) {
+        var container = $('#container');
+
+        var element = `
+        <div id="hour${hour}" class="row time-block">
+            <div class="col-md-1 hour">
+            ${moment(hour,'H').format('hA')}
+            </div>
+            <textarea class="col-md-10 description"></textarea>
+            <button class="btn saveBtn col-md-1" value="${hour}"><i class="far fa-save"></i></button>
+        </div>
+        `
+        container.append(element);
+    }
+}
 
 // timeblocks color coded on past, present, future (if statements)
 function tickTime() {
     var currentHour = moment().hour();
     if (lastProcessedHour !== currentHour) {
-        for (hour = 9; hour <= 17; hour++){
+        for (hour = startTime; hour <= endTime; hour++){
             var divHour = $('#hour'+hour);
             if (hour === currentHour) {
                 divHour.removeClass('past future')
@@ -27,21 +46,22 @@ function tickTime() {
     }
 }
 
-tickTime() 
-setInterval(tickTime, 1000)
-
 // when save is clicked, event is saved into (set) local storage
 function saveInfo(elem) {
-    var textArea = $('#hour' + elem.target.value).find('textarea')[0];
+    var textArea = $(`#hour${elem.target.value}`).find('textarea')[0];
     $(textArea).focusout();
     var hourlyEvent = $(textArea).val();
-
+    
     localStorage.setItem('hour' + elem.target.value, hourlyEvent)
 }
 
+// jQuery can detect readiness, so my functions only run once the DOM is ready for js code
 $(document).ready(function(){
+    generateCalendar()
+    tickTime() 
+    setInterval(tickTime, 1000)
     
-    for (hour = 9; hour <=17; hour++) {
+    for (hour = startTime; hour <=endTime; hour++) {
         var currentHourDiv = $('#hour'+hour);
         // add local storage event to text area
         var savedEvent = localStorage.getItem('hour'+hour)
@@ -49,11 +69,9 @@ $(document).ready(function(){
             var textArea = $(currentHourDiv.find('textarea')[0]);
             textArea.val(savedEvent)
         }
+        
         // add event handler to save
         var button = currentHourDiv.find('button')[0];
         $(button).on('click', saveInfo)
     }
 })
-
-
-// if page is refreshed, event is still present (get)
