@@ -42,7 +42,7 @@ function tickTime() {
                 divHour.addClass('future') ;
             }
         } 
-        lastProcessedHour = currentHour;
+        // lastProcessedHour = currentHour;
     }
 }
 

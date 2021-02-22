@@ -10,13 +10,11 @@
 
 ## Description
 ---
-Enjoy this fundamentals of JavaScript quiz! Included in this repository is code designed to create a timed quiz, which also keeps track of high scores. The requirements for this project were to create dynamically updated HTML and CSS powered by JavaScript. 
-
-Working through this refactor is a perfect way to understand how to utilize functions and for loops, as well as their purpose in code. It is easy to try and explain a set of statements that perform a task should make sense, but until you write and execute something yourself, it doesn’t always truly click.
+This code was refactored using starter calendar code. The idea was to improve the app so it would run the HTML and CSS with dynamic updates from jQuery. I generated my calendar utilizing JavaScript and then attatched the classes. Functions were created using moment.js to update utilizing military time.
 
 Deployed Website: 
 
-![Work Day Scheduler](*****Include Screenshot here******)
+![Work Day Scheduler](assets/work-day-schedule-pic.png)
 
 ## Requirements 
 ---
