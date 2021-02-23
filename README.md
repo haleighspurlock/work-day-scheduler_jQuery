@@ -10,13 +10,14 @@
 
 ## Description
 ---
-This code was refactored using starter calendar code. The idea was to improve the app so it would run the HTML and CSS with dynamic updates from jQuery. I generated my calendar utilizing JavaScript and then attatched the classes. Functions were created using moment.js to update utilizing military time.
+This code was refactored using starter calendar code. The idea was to improve the app so it would run the HTML and CSS with dynamic updates from jQuery. I generated my calendar utilizing JavaScript and then attatched the classes. Functions were created using moment.js to update utilizing military time. All of the events entered will store to local store and stay static upon refresh.
 
 Deployed Website: 
 
 ![Work Day Scheduler](assets/work-day-schedule-pic.png)
+![Work Day Scheduler](assets/local-storage-pic.png)
 
-## Requirements 
+## Requirements
 ---
 ```
 GIVEN I am using a daily planner to create a schedule

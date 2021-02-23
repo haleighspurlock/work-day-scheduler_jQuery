@@ -1,5 +1,5 @@
 var startTime = 9;
-var endTime = 17;
+var endTime = 18;
 
 var lastProcessedHour = 0;
 
@@ -42,18 +42,18 @@ function tickTime() {
                 divHour.addClass('future') ;
             }
         } 
-        // lastProcessedHour = currentHour;
+        lastProcessedHour = currentHour;
     }
 }
 
 // when save is clicked, event is saved into (set) local storage
-function saveInfo(elem) {
-    var textArea = $(`#hour${elem.target.value}`).find('textarea')[0];
-    $(textArea).focusout();
+$('.container').on('click','.saveBtn', function () {
+    var textArea = $(`#hour${$(this).val()}`).find('textarea')[0];
+    // $(textArea).focusout();
     var hourlyEvent = $(textArea).val();
     
-    localStorage.setItem('hour' + elem.target.value, hourlyEvent)
-}
+    localStorage.setItem('hour' + $(this).val(), hourlyEvent)
+})
 
 // jQuery can detect readiness, so my functions only run once the DOM is ready for js code
 $(document).ready(function(){
@@ -72,6 +72,5 @@ $(document).ready(function(){
         
         // add event handler to save
         var button = currentHourDiv.find('button')[0];
-        $(button).on('click', saveInfo)
     }
 })
